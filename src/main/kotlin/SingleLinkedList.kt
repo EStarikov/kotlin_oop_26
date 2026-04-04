@@ -107,7 +107,7 @@ class SingleLinkedList : CustomList {
 
             override fun next(): Int {
                 if (!hasNext()) throw NoSuchElementException()
-                var res = cur!!.value
+                val res = cur!!.value
                 cur = cur!!.next
                 return res
             }

@@ -2,25 +2,22 @@ package org.example
 
 class SingleLinkedList : CustomList {
 
-    // don't use any java/kotlin internal datastructures like lists))
-    // write from scratch))
-
     private var head: Node? = null
-    private var size_: Int = 0
+    private var _size = 0
     private class Node(element: Int) {
        var value: Int = element
         var next: Node? = null
     }
 
     override val size: Int
-        get() = size_
+        get() = _size
 
     override fun add(element: Int) {
-        val newNode: Node = Node(element)
+        val newNode = Node(element)
 
         if (head == null) {
             head = newNode
-            size_ = 1
+            _size = 1
             return 
         }
 
@@ -29,16 +26,16 @@ class SingleLinkedList : CustomList {
             cur = cur.next
         }
         cur?.next = newNode
-        size_++
+        _size++
     }
 
     override operator fun set(index: Int, value: Int) {
-        if (index >= size_ || index < 0) {
+        if (index !in 0 until _size) {
             throw IndexOutOfBoundsException()
         }
         
         var cur: Node? = head
-        for (i in 0 until index) {
+        repeat(index) {
             cur = cur?.next
         }
 
@@ -46,19 +43,19 @@ class SingleLinkedList : CustomList {
     }
 
     override fun addFirst(element: Int) {
-        val newNode: Node = Node(element)
+        val newNode = Node(element)
         val temp: Node? = head
         newNode.next = temp
         head = newNode
-        size_++
+        _size++
     }
 
     override operator fun get(index: Int): Int {
-        if (index >= size_ || index < 0) {
+        if (index !in 0 until _size) {
             throw IndexOutOfBoundsException()
         }
         var cur: Node? = head
-        for (i in 0 until index) {
+        repeat(index)  {
             cur = cur?.next
         }
 
@@ -67,7 +64,7 @@ class SingleLinkedList : CustomList {
 
     override fun indexOf(element: Int): Int {
         var cur: Node? = head
-        for (i in 0 until size_) {
+        for (i in 0 until _size) {
             if (cur?.value == element) {
                 return i
             }
@@ -78,18 +75,15 @@ class SingleLinkedList : CustomList {
     }
 
     override fun remove(element: Int): Boolean {
-        var cur: Node? = head
-        if (cur == null) {
-            return false
-        }
-        if (cur.value == element) {
-            size_--
+        var cur: Node? = head ?: return false
+        if (cur?.value == element) {
+            _size--
             head = cur.next
             return true
         }
         while (cur?.next != null) {
             if (cur.next?.value == element) {
-                size_--
+                _size--
                 cur.next = cur.next?.next
                 return true
             }

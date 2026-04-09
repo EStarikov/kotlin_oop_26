@@ -17,7 +17,7 @@ class SingleLinkedList : CustomList {
 
         if (head == null) {
             head = newNode
-            _size = 1
+            _size++
             return 
         }
 
@@ -39,13 +39,12 @@ class SingleLinkedList : CustomList {
             cur = cur?.next
         }
 
-        cur?.value = value
+        cur!!.value = value
     }
 
     override fun addFirst(element: Int) {
         val newNode = Node(element)
-        val temp: Node? = head
-        newNode.next = temp
+        newNode.next = head
         head = newNode
         _size++
     }
@@ -76,7 +75,7 @@ class SingleLinkedList : CustomList {
 
     override fun remove(element: Int): Boolean {
         var cur: Node? = head ?: return false
-        if (cur?.value == element) {
+        if (cur!!.value == element) {
             _size--
             head = cur.next
             return true

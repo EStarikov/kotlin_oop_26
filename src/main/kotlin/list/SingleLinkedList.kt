@@ -9,7 +9,6 @@ class SingleLinkedList : CustomList {
         var next: Node? = null
     }
 
-
     override val size: Int
         get() = _size
 

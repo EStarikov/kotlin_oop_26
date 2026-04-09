@@ -18,8 +18,8 @@ class SingleLinkedStack : Stack, SingleLinkedList() {
     }
     override fun pop(): Int {
         if (isEmpty) throw NoSuchElementException()
-        val value = get(0)
-        remove(value)
-        return value
+        val result = get(0)
+        remove(result)
+        return result
     }
 }

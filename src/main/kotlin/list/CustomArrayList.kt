@@ -1,8 +1,8 @@
 package org.example.list
 
 class CustomArrayList(startSize: Int): CustomList {
-    var inner = IntArray(startSize)
-    var _size = 0
+    private var inner = IntArray(startSize)
+    private var _size = 0
 
     override fun get(index: Int): Int {
         if (index >= _size) {

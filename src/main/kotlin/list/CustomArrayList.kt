@@ -7,6 +7,7 @@ class CustomArrayList(startSize: Int): CustomList {
 
     override fun add(element: Int) {
         TODO("implement this")
+        TODO("just 1")
     }
 
     private fun resize(newSize: Int) {

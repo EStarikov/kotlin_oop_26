@@ -5,14 +5,14 @@ class CustomArrayList(startSize: Int): CustomList {
     private var _size = 0
 
     override fun get(index: Int): Int {
-        if (index >= _size) {
+        if (index !in 0 until _size) {
             throw IndexOutOfBoundsException()
         }
         return inner[index]
     }
 
     override fun set(index: Int, value: Int) {
-        if (index >= _size) {
+        if (index !in 0 until _size) {
             throw IndexOutOfBoundsException()
         }
         inner[index] = value
@@ -52,6 +52,7 @@ class CustomArrayList(startSize: Int): CustomList {
             }
             if (flag) inner[i - 1] = inner[i]
         }
+        if (flag) inner[_size] = 0
         return flag
     }
 

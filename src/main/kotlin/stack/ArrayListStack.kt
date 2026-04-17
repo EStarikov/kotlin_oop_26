@@ -3,7 +3,7 @@ package org.example.stack
 import org.example.list.CustomArrayList
 
 class ArrayListStack : Stack {
-    var arrayList = CustomArrayList(0)
+    private val arrayList = CustomArrayList(0)
 
     override fun add(element: Int) {
         arrayList.add(element)

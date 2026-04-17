@@ -91,7 +91,7 @@ class SingleLinkedListTest {
         list.add(20)
         list.add(30)
 
-        assertEquals(2, list.indexOf(20))
+        assertEquals(1, list.indexOf(20))
     }
 
     @Test
@@ -102,5 +102,37 @@ class SingleLinkedListTest {
 
         list[2] = 5
         assertEquals(5, list[2])
+    }
+
+    @Test
+    fun `remove all elements`() {
+        list.add(1)
+        list.add(2)
+        list.add(3)
+
+        list.remove(3)
+        list.remove(1)
+        list.remove(2)
+
+        assertThrows(IndexOutOfBoundsException::class.java) {
+            list[0]
+        }
+    }
+
+    @Test
+    fun `return first index of element`() {
+        list.add(1)
+        list.add(2)
+        list.add(2)
+        assertEquals(1, list.indexOf(2))
+    }
+
+    @Test
+    fun `return index of non-existing element`() {
+        list.add(1)
+        list.add(2)
+        list.add(3)
+        list.remove(3)
+        assertEquals(-1, list.indexOf(3))
     }
 }
